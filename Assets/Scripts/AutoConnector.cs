@@ -1,27 +1,45 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class AutoConnector : MonoBehaviour
 {
-    private bool conectado = false;
+    public float raioConexao = 0.5f;
+    public LayerMask camadaConectavel;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void ConectarAgora()
     {
-        if (conectado || collision.rigidbody == null) return;
+        Collider2D[] proximos = Physics2D.OverlapCircleAll(transform.position, raioConexao, camadaConectavel);
+        Debug.Log($"[{name}] Detectados {proximos.Length} objetos próximos");
 
-        Rigidbody2D thisRb = GetComponent<Rigidbody2D>();
-        Rigidbody2D otherRb = collision.rigidbody;
+        Rigidbody2D meuRb = GetComponent<Rigidbody2D>();
 
-        if (thisRb.bodyType == RigidbodyType2D.Kinematic && otherRb.bodyType == RigidbodyType2D.Kinematic)
+        foreach (var col in proximos)
         {
-            FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
-            joint.connectedBody = otherRb;
+            if (col.gameObject == gameObject) continue;
 
-            joint.autoConfigureConnectedAnchor = true;
-            joint.enableCollision = false;
-            joint.breakForce = float.PositiveInfinity;
-            joint.breakTorque = float.PositiveInfinity;
+            Rigidbody2D outroRb = col.attachedRigidbody;
+            if (outroRb == null) continue;
 
-            conectado = true;
+            // Se for roda, conecta com hinge
+            if (CompareTag("rodaTag"))
+            {
+                HingeJoint2D joint = gameObject.AddComponent<HingeJoint2D>();
+                joint.connectedBody = outroRb;
+                joint.autoConfigureConnectedAnchor = true;
+                joint.useMotor = false;
+                Debug.Log($"🔧 [{name}] Conectado via HingeJoint2D com {col.name}");
+            }
+            else
+            {
+                FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
+                joint.connectedBody = outroRb;
+                joint.enableCollision = false;
+                joint.breakForce = 10000f;
+                joint.breakTorque = 10000f;
+                Debug.Log($"🔗 [{name}] Conectado via FixedJoint2D com {col.name}");
+            }
+
+            break; // conecta com apenas 1 objeto próximo
         }
     }
 }

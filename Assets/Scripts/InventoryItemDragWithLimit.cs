@@ -6,7 +6,7 @@ using TMPro;
 public class InventoryItemDragWithLimit : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject prefabDaPeca;
-    public RectTransform areaConstruida;
+    public Transform areaConstruida;
     public TextMeshProUGUI textoQuantidade;
     public int quantidadeMaxima = 1;
 
@@ -54,11 +54,11 @@ public class InventoryItemDragWithLimit : MonoBehaviour, IBeginDragHandler, IDra
 
         Debug.Log("Tentando instanciar peça em: " + worldPos);
 
-        GameObject novaPeca = Instantiate(prefabDaPeca, worldPos, Quaternion.identity);
+        GameObject novaPeca = Instantiate(prefabDaPeca, worldPos, Quaternion.identity, areaConstruida);
 
         // Corrige visual e física
         novaPeca.transform.localScale = Vector3.one * 0.15f;
-        novaPeca.layer = LayerMask.NameToLayer("Default");
+        // novaPeca.layer = LayerMask.NameToLayer("Default");
 
         SpriteRenderer sr = novaPeca.GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -75,6 +75,12 @@ public class InventoryItemDragWithLimit : MonoBehaviour, IBeginDragHandler, IDra
         {
             GetComponent<Button>().interactable = false;
         }
+        
+    AutoConnector auto = novaPeca.GetComponent<AutoConnector>();
+    if (auto != null)
+{
+    auto.ConectarAgora();
+}
     }
 
 void AtualizarUI()

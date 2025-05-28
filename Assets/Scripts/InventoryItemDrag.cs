@@ -40,34 +40,34 @@ public class InventoryItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler,
 public void OnEndDrag(PointerEventData eventData)
 {
     if (draggedImage != null)
-    {
-        // Converte posição da UI para posição no mundo
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
-        worldPos.z = 0;
+        {
+            // Converte posição da UI para posição no mundo
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
+            worldPos.z = 0;
 
-        // Calcula os cantos da área de construção (UI)
-        Vector3[] corners = new Vector3[4];
-        buildAreaRect.GetWorldCorners(corners);
+            // Calcula os cantos da área de construção (UI)
+            Vector3[] corners = new Vector3[4];
+            buildAreaRect.GetWorldCorners(corners);
 
-        Vector3 minWorld = corners[0]; // Inferior esquerdo
-        Vector3 maxWorld = corners[2]; // Superior direito
+            Vector3 minWorld = corners[0]; // Inferior esquerdo
+            Vector3 maxWorld = corners[2]; // Superior direito
 
-        // Limita o spawn dentro da área da BuildArea
-        worldPos.x = Mathf.Clamp(worldPos.x, minWorld.x, maxWorld.x);
-        worldPos.y = Mathf.Clamp(worldPos.y, minWorld.y, maxWorld.y);
+            // Limita o spawn dentro da área da BuildArea
+            worldPos.x = Mathf.Clamp(worldPos.x, minWorld.x, maxWorld.x);
+            worldPos.y = Mathf.Clamp(worldPos.y, minWorld.y, maxWorld.y);
 
-        // Instancia a peça real no mundo
-        GameObject spawned = Instantiate(piecePrefab, worldPos, Quaternion.identity);
+            // Instancia a peça real no mundo
+            GameObject spawned = Instantiate(piecePrefab, worldPos, Quaternion.identity);
 
-        // Corrige escala e opacidade
-        spawned.transform.localScale = piecePrefab.transform.localScale;
+            // Corrige escala e opacidade
+            spawned.transform.localScale = piecePrefab.transform.localScale;
 
-        SpriteRenderer sr = spawned.GetComponent<SpriteRenderer>();
-        if (sr != null)
-            sr.color = Color.white;
+            SpriteRenderer sr = spawned.GetComponent<SpriteRenderer>();
+            if (sr != null)
+                sr.color = Color.white;
 
-        // Remove imagem fantasma do drag
-        Destroy(draggedImage);
-    }
+            // Remove imagem fantasma do drag
+            Destroy(draggedImage);
+        }
 }
 }

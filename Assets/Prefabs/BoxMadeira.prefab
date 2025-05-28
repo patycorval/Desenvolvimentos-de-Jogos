@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 8900272667022358348}
   - component: {fileID: 4572523724003903736}
   - component: {fileID: 8473667323774562327}
-  m_Layer: 0
+  - component: {fileID: 5771504363703519322}
+  m_Layer: 3
   m_Name: BoxMadeira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,3 +189,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a5d46c1393d514db4e5b8bf48f1274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raioConexao: 1
+  camadaConectavel:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &5771504363703519322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636244225626699333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9781e075b6efd5c4e82bcf55cd1fe437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ehMotor: 0

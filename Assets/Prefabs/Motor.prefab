@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5101249057281342529}
   - component: {fileID: 1234283417895605629}
   - component: {fileID: -5276729955457568689}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Motor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,3 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a5d46c1393d514db4e5b8bf48f1274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raioConexao: 1
+  camadaConectavel:
+    serializedVersion: 2
+    m_Bits: 8

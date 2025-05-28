@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4112773915524969529}
   - component: {fileID: -8913179195983353960}
   - component: {fileID: -1440939623178239255}
-  m_Layer: 0
+  - component: {fileID: 232295323775614815}
+  m_Layer: 3
   m_Name: Motor2
-  m_TagString: Untagged
+  m_TagString: motorTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,11 +100,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2432652230423692965}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -176,6 +177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a5d46c1393d514db4e5b8bf48f1274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raioConexao: 1
+  camadaConectavel:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &-1440939623178239255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +193,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e5a19248b291d4b8dc7cc4f1f41595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &232295323775614815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432652230423692965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eb4b6b6348f9043980702d8fea5f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ehMotor: 1

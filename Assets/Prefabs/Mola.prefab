@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2256796400883888234}
   - component: {fileID: 59914801711715794}
   - component: {fileID: -6615109929288576608}
-  m_Layer: 0
+  - component: {fileID: -1746880504495414535}
+  m_Layer: 3
   m_Name: Mola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +104,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -188,3 +189,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a5d46c1393d514db4e5b8bf48f1274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raioConexao: 1
+  camadaConectavel:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &-1746880504495414535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890346184495060025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9781e075b6efd5c4e82bcf55cd1fe437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ehMotor: 0

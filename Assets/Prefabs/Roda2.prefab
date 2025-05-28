@@ -10,13 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 8326995667079915112}
   - component: {fileID: 5691968410049653828}
-  - component: {fileID: 1852436174543796506}
   - component: {fileID: 8782204068129605733}
+  - component: {fileID: 1852436174543796506}
   - component: {fileID: 5889013418249950532}
   - component: {fileID: -1206070008018652854}
-  m_Layer: 0
+  - component: {fileID: 6032207128370928225}
+  - component: {fileID: 1103561855632222647}
+  m_Layer: 3
   m_Name: Roda2
-  m_TagString: Untagged
+  m_TagString: rodaTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,33 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1852436174543796506
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8145952177566669230}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &8782204068129605733
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -154,6 +129,33 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 2
+--- !u!50 &1852436174543796506
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145952177566669230}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &5889013418249950532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,3 +180,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a5d46c1393d514db4e5b8bf48f1274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raioConexao: 2
+  camadaConectavel:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &6032207128370928225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145952177566669230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9781e075b6efd5c4e82bcf55cd1fe437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ehMotor: 0
+--- !u!114 &1103561855632222647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145952177566669230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ffe62404428e74fa7124de8706a2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidade: 300
+  forcaPulo: 8
+  camadaChao:
+    serializedVersion: 2
+    m_Bits: 64

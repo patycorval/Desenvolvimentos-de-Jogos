@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 843800750143851811}
   - component: {fileID: 3638320571019489799}
   - component: {fileID: 426643666893741202}
-  m_Layer: 0
+  - component: {fileID: 1321850670862953656}
+  - component: {fileID: 5048823286759091657}
+  m_Layer: 3
   m_Name: Roda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +137,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3675013961172797402}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -178,3 +180,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a5d46c1393d514db4e5b8bf48f1274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raioConexao: 1.5
+  camadaConectavel:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &1321850670862953656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675013961172797402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9781e075b6efd5c4e82bcf55cd1fe437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ehMotor: 0
+--- !u!114 &5048823286759091657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675013961172797402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ffe62404428e74fa7124de8706a2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidade: 300
+  forcaPulo: 8
+  camadaChao:
+    serializedVersion: 2
+    m_Bits: 0

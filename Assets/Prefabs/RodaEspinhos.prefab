@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2749242785636557146}
   - component: {fileID: 8979729899949120105}
   - component: {fileID: 7925600075230587218}
-  m_Layer: 0
+  - component: {fileID: 9021789556348053147}
+  m_Layer: 3
   m_Name: RodaEspinhos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,3 +166,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9021789556348053147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8341414692050990462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ffe62404428e74fa7124de8706a2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidade: 300
+  forcaPulo: 8
+  camadaChao:
+    serializedVersion: 2
+    m_Bits: 0
