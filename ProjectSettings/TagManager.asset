@@ -6,6 +6,7 @@ TagManager:
   tags:
   - motorTag
   - rodaTag
+  - pecaTag
   layers:
   - Default
   - TransparentFX

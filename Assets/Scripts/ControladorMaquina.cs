@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 public class ControladorMaquina : MonoBehaviour
 {
-    public float velocidade = 300f;
-    public float alturaPulo = 100000000000000000f; // Agora em metros por segundo, não força
+    public float velocidade = 100f;
+    public float forcaPulo = 80f;
     public LayerMask camadaChao;
+    public float cooldownPulo = 0.5f;
 
     private Rigidbody2D motorRb;
     private List<Rigidbody2D> rodas = new List<Rigidbody2D>();
     private bool controleAtivo = false;
+    private float tempoUltimoPulo = 0f;
 
     public void IniciarControle()
     {
@@ -18,33 +20,25 @@ public class ControladorMaquina : MonoBehaviour
         Debug.Log("✅ IniciarControle() chamado. Controle ativado.");
     }
 
-    void Update()
+    public void Update()
     {
         if (!controleAtivo || motorRb == null || rodas.Count == 0)
-        {
             return;
-        }
 
         float direcao = Input.GetAxisRaw("Horizontal");
-        Debug.Log($"🎮 Direção: {direcao}");
 
         foreach (Rigidbody2D roda in rodas)
         {
             if (roda != null)
-            {
                 roda.AddTorque(-direcao * velocidade);
-                Debug.Log($"🌀 Torque aplicado na roda: {roda.name}");
-            }
         }
 
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && EstaNoChao())
+        // Pulo
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && EstaNoChao() && Time.time - tempoUltimoPulo > cooldownPulo)
         {
-            if (motorRb != null)
-            {
-                // Aplica pulo direto na velocidade vertical
-                motorRb.velocity = new Vector2(motorRb.velocity.x, alturaPulo);
-                Debug.Log("⬆️ PULO executado via velocity.");
-            }
+            motorRb.AddForce(Vector2.up * forcaPulo, ForceMode2D.Impulse);
+            tempoUltimoPulo = Time.time;
+            Debug.Log("⬆️ PULO executado.");
         }
     }
 
@@ -57,6 +51,7 @@ public class ControladorMaquina : MonoBehaviour
             if (peca != null && peca.ehMotor)
             {
                 motorRb = obj.GetComponent<Rigidbody2D>();
+                motorRb.gravityScale = 1f;
                 motorRb.freezeRotation = true;
 
                 CameraFollow cam = Camera.main.GetComponent<CameraFollow>();
@@ -74,15 +69,7 @@ public class ControladorMaquina : MonoBehaviour
         {
             Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
             if (rb != null)
-            {
                 rodas.Add(rb);
-            }
-        }
-
-        Debug.Log($"🔍 Rodas detectadas: {rodas.Count}");
-        if (rodas.Count == 0)
-        {
-            Debug.LogWarning("⚠️ Nenhuma roda válida encontrada!");
         }
     }
 
@@ -90,16 +77,11 @@ public class ControladorMaquina : MonoBehaviour
     {
         foreach (Rigidbody2D roda in rodas)
         {
-            RaycastHit2D hit = Physics2D.Raycast(roda.position, Vector2.down, 0.5f, camadaChao);
-            Debug.DrawRay(roda.position, Vector2.down * 0.5f, Color.red, 0.1f);
-
+            RaycastHit2D hit = Physics2D.Raycast(roda.position, Vector2.down, 0.6f, camadaChao);
+            Debug.DrawRay(roda.position, Vector2.down * 0.6f, Color.red, 0.1f);
             if (hit.collider != null)
-            {
-                Debug.Log($"✅ Roda {roda.name} tocando o chão.");
                 return true;
-            }
         }
-
         return false;
     }
 }

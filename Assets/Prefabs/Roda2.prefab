@@ -209,8 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ffe62404428e74fa7124de8706a2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 300
-  forcaPulo: 8
+  torque: 150
+  forcaPulo: 30
   camadaChao:
     serializedVersion: 2
     m_Bits: 64
+  raioVerificacao: 0.1

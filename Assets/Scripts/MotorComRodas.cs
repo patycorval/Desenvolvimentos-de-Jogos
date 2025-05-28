@@ -1,58 +1,64 @@
-// using UnityEngine;
+using UnityEngine;
 
-// public class MotorComRodas : MonoBehaviour
-// {
-//     public float torque = 150f;
-//     public float forcaPulo = 8f;
-//     public LayerMask camadaChao; // Defina no Inspector
-//     public float raioVerificacao = 0.1f;
+public class MotorComRodas : MonoBehaviour
+{
+    public float torque = 150f;
+    public float forcaPulo = 120f; // você pode aumentar para 30f, 40f...
 
-//     private Rigidbody2D[] rodas;
+    public LayerMask camadaChao; // Defina no Inspector
+    public float raioVerificacao = 0.1f;
 
-//     void Start()
-//     {
-//         GameObject[] rodasObj = GameObject.FindGameObjectsWithTag("rodaTag");
-//         rodas = new Rigidbody2D[rodasObj.Length];
+    private Rigidbody2D[] rodas;
+    private Rigidbody2D motorRb;
 
-//         for (int i = 0; i < rodasObj.Length; i++)
-//         {
-//             rodas[i] = rodasObj[i].GetComponent<Rigidbody2D>();
-//         }
-//     }
+    public void Start()
+    {
+        GameObject[] rodasObj = GameObject.FindGameObjectsWithTag("rodaTag");
+        rodas = new Rigidbody2D[rodasObj.Length];
 
-//     void Update()
-//     {
-//         float direcao = Input.GetAxisRaw("Horizontal");
+        for (int i = 0; i < rodasObj.Length; i++)
+        {
+            rodas[i] = rodasObj[i].GetComponent<Rigidbody2D>();
+        }
 
-//         // Gira as rodas
-//         foreach (Rigidbody2D roda in rodas)
-//         {
-//             if (roda != null)
-//                 roda.AddTorque(-direcao * torque * Time.deltaTime, ForceMode2D.Force);
-//         }
+        GameObject motorObj = GameObject.FindGameObjectWithTag("motorTag");
+        if (motorObj != null)
+        {
+            motorRb = motorObj.GetComponent<Rigidbody2D>();
+        }
+    }
 
-//         // Pulo: só se pelo menos uma roda estiver tocando o chão
-//         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && EstaNoChao())
-//         {
-//             foreach (Rigidbody2D roda in rodas)
-//             {
-//                 if (roda != null)
-//                     roda.AddForce(Vector2.up * forcaPulo, ForceMode2D.Impulse);
-//             }
-//         }
-//     }
+    void Update()
+    {
+        float direcao = Input.GetAxisRaw("Horizontal");
 
-//     bool EstaNoChao()
-//     {
-//         foreach (Rigidbody2D roda in rodas)
-//         {
-//             if (roda != null)
-//             {
-//                 Collider2D col = Physics2D.OverlapCircle(roda.position, raioVerificacao, camadaChao);
-//                 if (col != null)
-//                     return true;
-//             }
-//         }
-//         return false;
-//     }
-// }
+        foreach (Rigidbody2D roda in rodas)
+        {
+            if (roda != null)
+                roda.AddTorque(-direcao * torque * Time.deltaTime, ForceMode2D.Force);
+        }
+
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && EstaNoChao())
+        {
+            if (motorRb != null)
+            {
+                motorRb.AddForce(Vector2.up * forcaPulo, ForceMode2D.Impulse);
+                Debug.Log("⬆️ PULO aplicado no motor para levantar toda a máquina.");
+            }
+        }
+    }
+
+    bool EstaNoChao()
+    {
+        foreach (Rigidbody2D roda in rodas)
+        {
+            if (roda != null)
+            {
+                Collider2D col = Physics2D.OverlapCircle(roda.position, raioVerificacao, camadaChao);
+                if (col != null)
+                    return true;
+            }
+        }
+        return false;
+    }
+}

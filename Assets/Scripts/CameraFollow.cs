@@ -4,9 +4,9 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform alvo;
     public float suavidade = 0.125f;
-    public Vector3 offset = new Vector3(0, 0, -10);
+public Vector3 offset = new Vector3(0, 2.5f, -10f);
 
-    void LateUpdate()
+    public void LateUpdate()
     {
         if (alvo == null) return;
 

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5048823286759091657}
   m_Layer: 3
   m_Name: Roda
-  m_TagString: Untagged
+  m_TagString: rodaTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,8 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ffe62404428e74fa7124de8706a2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 300
-  forcaPulo: 8
+  velocidade: 100
+  forcaPulo: 40
   camadaChao:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  cooldownPulo: 0.5
